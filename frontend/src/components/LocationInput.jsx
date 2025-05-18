@@ -24,7 +24,7 @@ function LocationInput({ onLocationSelect }) {
 
   // Load saved location from localStorage
   useEffect(() => {
-    const savedLocation = localStorage.getItem('userLocation');
+    const savedLocation = sessionStorage.getItem('userLocation');
     if (savedLocation) {
       const { lat, lng } = JSON.parse(savedLocation);
       setLatitude(lat);
@@ -89,7 +89,7 @@ function LocationInput({ onLocationSelect }) {
 
   const saveLocation = (lat, lng) => {
     const location = { lat, lng };
-    localStorage.setItem('userLocation', JSON.stringify(location));
+    sessionStorage.setItem('userLocation', JSON.stringify(location));
     onLocationSelect(location);
     setIsLocationSet(true);
   };

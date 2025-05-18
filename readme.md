@@ -39,6 +39,7 @@ The Restaurant Search Application implements advanced geospatial and text search
   - 2dsphere indexing for geospatial queries
   - Atlas Search for full-text search
   - Aggregation pipeline for complex queries
+- Google Gemini AI for image-based cuisine recognition
 - RESTful API architecture
 
 ## Installation Guide
@@ -163,6 +164,7 @@ Retrieves a paginated list of restaurants with optional filtering and location-b
 - `radius` (optional): Search radius in meters (default: 3000)
 - `name` (optional): Search term for restaurant name or description
 - `cuisines` (optional): Comma-separated list of cuisines to filter by
+- `image` (optional): Base64 encoded image for cuisine recognition using Gemini AI
 
 **Example Request:**
 

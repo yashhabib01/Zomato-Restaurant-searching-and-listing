@@ -58,11 +58,13 @@ const getRestaurants = async (req, res) => {
     const matchConditions = {};
 
     if (name) {
-      matchConditions.push({
-        $or: [
-          { name: { $regex: name, $options: "i" } },
-          { description: { $regex: name, $options: "i" } },
-        ],
+      pipeline.push({
+        $match: {
+          $or: [
+            { name: { $regex: name, $options: "i" } },
+            { description: { $regex: name, $options: "i" } },
+          ],
+        },
       });
     }
 
