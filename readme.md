@@ -17,6 +17,7 @@ The Restaurant Search Application implements advanced geospatial and text search
 
 - **Geospatial Search**: Utilizes MongoDB's 2dsphere indexing for efficient location-based queries, enabling precise restaurant searches within specified radius and coordinates
 - **Atlas Search Integration**: Implements MongoDB Atlas Search for full-text search capabilities across restaurant names, cuisines, and descriptions
+- **Image-Based Search**: Implements Google's Gemini AI for image based cuisines filter
 - **Real-time Filtering**: Dynamic filtering system combining geospatial queries with text search for instant results
 - **RESTful API Architecture**: Node.js backend with Express.js providing scalable and maintainable API endpoints
 - **React Frontend**: Modern UI implementation using React with Material-UI components for responsive design
@@ -164,7 +165,6 @@ Retrieves a paginated list of restaurants with optional filtering and location-b
 - `radius` (optional): Search radius in meters (default: 3000)
 - `name` (optional): Search term for restaurant name or description
 - `cuisines` (optional): Comma-separated list of cuisines to filter by
-- `image` (optional): Base64 encoded image for cuisine recognition using Gemini AI
 
 **Example Request:**
 
