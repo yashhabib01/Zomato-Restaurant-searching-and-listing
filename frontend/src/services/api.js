@@ -17,7 +17,7 @@ export const getRestaurants = async ({
   cuisines,
   latitude,
   longitude,
-  radius = 5000,
+  radius = 3000,
 }) => {
   try {
     const params = new URLSearchParams();

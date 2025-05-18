@@ -35,7 +35,7 @@ const getRestaurants = async (req, res) => {
     const skip = (page - 1) * limit;
 
     // Get search parameters
-    const { latitude, longitude, radius = 5000, name, cuisines } = req.query;
+    const { latitude, longitude, radius = 3000, name, cuisines } = req.query;
 
     // Build aggregation pipeline
     const pipeline = [];
