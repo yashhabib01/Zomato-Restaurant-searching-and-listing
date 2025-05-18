@@ -2,6 +2,10 @@
 
 This application combines location-based search with filtering capabilities. Whether you're looking for a specific cuisine, exploring restaurants in a new area, or searching by restaurant name, our platform makes it easy to find exactly what you're craving.
 
+# Video
+
+[Demo Video](https://www.dropbox.com/scl/fi/ggfi9iczukvn7a52rwu9s/Restaurant.mkv?rlkey=p3zyo6gb6a68vuluwkyd1se25&st=fmhfocrs&dl=0)
+
 ## Table of Contents
 
 - [Overview](#overview)
