@@ -82,20 +82,19 @@ const getRestaurants = async (req, res) => {
     // Execute aggregation
     const restaurants = await Restaurant.aggregate(pipeline);
 
-    // Get total count
-    const countPipeline = [...pipeline];
-    countPipeline.push({ $count: "total" });
-    const countResult = await Restaurant.aggregate(countPipeline);
-    const total = countResult[0]?.total || 0;
+    // const countPipeline = [...pipeline];
+    // countPipeline.push({ $count: "total" });
+    // const countResult = await Restaurant.aggregate(countPipeline);
+    // const total = countResult[0]?.total || 0;
 
     res.status(200).json({
       success: true,
       data: restaurants,
       pagination: {
-        total,
+        // total,
         page,
         limit,
-        pages: Math.ceil(total / limit),
+        // pages: Math.ceil(total / limit),
       },
     });
   } catch (error) {
@@ -106,7 +105,46 @@ const getRestaurants = async (req, res) => {
   }
 };
 
+const addReview = async (req, res) => {
+  try {
+    const { restaurantId, comment, rating, date } = req.body;
+
+    if (!restaurantId || !comment || !rating || !date) {
+      return res.status(400).json({
+        success: false,
+        message: "fields are missing",
+      });
+    }
+    const restaurant = await Restaurant.findOne({ restaurantId: restaurantId });
+    const { aggregateRating, votes } = restaurant;
+    const addreviewRestaurant = await Restaurant.updateOne(
+      { restaurantId: restaurantId },
+      {
+        $push: {
+          ["reviews"]: {
+            rating: Number(rating),
+            comment: comment,
+            date: new Date(date),
+          },
+        },
+        aggregateRating: (aggregateRating * votes + rating) / (votes + 1),
+        votes: votes + 1,
+      }
+    );
+    res.json({
+      success: true,
+      data: addreviewRestaurant,
+    });
+  } catch (error) {
+    res.json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
 module.exports = {
   getRestaurantById,
   getRestaurants,
+  addReview,
 };

@@ -66,6 +66,19 @@ const restaurantSchema = new mongoose.Schema(
     priceRange: {
       type: Number,
     },
+    reviews: [
+      {
+        rating: {
+          type: Number,
+        },
+        comment: {
+          type: String,
+        },
+        date: {
+          type: Date,
+        },
+      },
+    ],
     aggregateRating: {
       type: Number,
     },

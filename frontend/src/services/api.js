@@ -47,3 +47,14 @@ export const getRestaurantById = async (id) => {
     throw error.response?.data || error.message;
   }
 };
+
+export const addReview = async (restaurantId, rating, comment, date) => {
+  try {
+    const response = await api.put(`${serverUrl}/restaurants/addReview`, {
+      restaurantId: restaurantId,
+      rating: rating,
+      comment: comment,
+      date: date,
+    });
+  } catch (error) {}
+};
